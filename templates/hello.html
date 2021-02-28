@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/style.css">
+
+    <title>Title</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <form action="https://postb.in/1586905719854-8012227944564" method="post">
+      <div class="form-group">
+        <label for="email">What is your name?</label>
+        <input type="text" class="form-control" placeholder="Enter your name" id="email">
+      </div>
+      <div class="form-group">
+        <label for="pwd">What is your favorite color?</label>
+        <input name="color" type="text" class="form-control" placeholder="Enter favorite color" id="pwd">
+      </div>
+      <div class="form-group form-check">
+        <label class="form-check-label">
+          <input name="rememberMe" class="form-check-input" type="checkbox"> Run you clever boy
+        </label>
+      </div>
+    
+     
+      <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+  <div class="container">
+    <div class="middle">
+      <div class="multi-range-slider">
+        <input type="range" id="input-left" min="0" max="100" value="25">
+        <input type="range" id="input-right" min="0" max="100" value="75">
+
+        <div class="slider">
+          <div class="track"></div>
+          <div class="range"></div>
+          <div class="thumb left"></div>
+          <div class="thumb right"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var inputLeft = document.getElementById("input-left");
+    var inputRight = document.getElementById("input-right");
+
+    var thumbLeft = document.querySelector(".slider > .thumb.left");
+    var thumbRight = document.querySelector(".slider > .thumb.right");
+    var range = document.querySelector(".slider > .range");
+
+    function setLeftValue() {
+      var _this = inputLeft,
+          min = parseInt(_this.min),
+          max = parseInt(_this.max);
+
+      _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+      
+      var percent = ((this.value - min) / (max - min)) * 100;
+
+      thumbLeft.style.left = percent + "%";
+      range.style.left = percent + "%";
+    }
+    setLeftValue();
+
+    function setRightValue() {
+      var _this = inputRight,
+          min = parseInt(_this.min),
+          max = parseInt(_this.max);
+
+      _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+      
+      var percent = ((this.value - min) / (max - min)) * 100;
+
+      thumbRight.style.right = (100 - percent) + "%";
+      range.style.right = (100- percent) + "%";
+    }
+    setRightValue();
+
+    inputLeft.addEventListener("input", setLeftValue)
+    inputRight.addEventListener("input", setRightValue)
+
+    inputLeft.addEventListener("mouseover", function() {
+      thumbLeft.classList.add("hover");
+    });
+    inputLeft.addEventListener("mouseout", function() {
+      thumbLeft.classList.remove("hover");
+    });
+    inputLeft.addEventListener("mousedown", function() {
+      thumbLeft.classList.add("active");
+    });
+    inputLeft.addEventListener("mouseup", function() {
+      thumbLeft.classList.remove("active");
+    });
+
+    inputRight.addEventListener("mouseover", function() {
+      thumbRight.classList.add("hover");
+    });
+    inputRight.addEventListener("mouseout", function() {
+      thumbRight.classList.remove("hover");
+    });
+    inputRight.addEventListener("mousedown", function() {
+      thumbRight.classList.add("active");
+    });
+    inputRight.addEventListener("mouseup", function() {
+      thumbRight.classList.remove("active");
+    });
+
+    $("#input-left").val()
+  </script>
+
+  </body>
+</html>
